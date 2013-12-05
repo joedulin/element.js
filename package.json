@@ -1,0 +1,30 @@
+{
+  "name": "element.js",
+  "description": "An objectified way to work with html elements (Not DOM)",
+  "version": "0.0.1",
+  "author": "Joe Dulin <joedulin+github@gmail.com>",
+  "dependencies": {},
+  "keywords": [
+    "element",
+    "web",
+    "template",
+    "dom",
+    "jquery"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joedulin/element.js"
+  },
+  "main": "index",
+  "engines": {
+    "node": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/joedulin/element.js/issues"
+  },
+  "homepage": "https://github.com/joedulin/element.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
+}
