@@ -1,1 +1,2 @@
-exports.Element = require('./class/element.js').Element;
+exports.Element = require('./lib/element.js').Element;
+exports.e = require('./lib/helpers.js').helpers;
