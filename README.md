@@ -31,96 +31,49 @@ console.log(hello.render());
 //<div class="someClass anotherClass">Hello World</div>
 ```
 
-Or, more detailed:
+Using helpers, how it is intended to be used:
 ```javascript
-var dropdown = new Element('div', {
-  classes: ['dropdown'],
-  inner: [
-    new Element('button', {
-      classes: ['btn','dropdown-toggle','sr-only'],
+var Element-fw = require('element.js');
+var Element = Element-fw.Element;
+var e = Element-fw.e;
+
+var dropdown = e.div(
+  e.button(
+    [
+      'Dropdown',
+      e.span(null, { classes: ['caret'] })
+    ],
+    {
       attrs: {
         type: 'button',
         id: 'dropdownMenu1',
         data-toggle: 'dropdown'
       },
-      inner: [
-        'Dropdown',
-        new Element('span', {
-          classes: ['caret']
-        })
-      ]
-    })
-  ]
-});
+      classes: [ 'btn','dropdown-toggle','sr-only' ]
+    }
+  )
+);
+dropdown.addClass('dropdown');
 
-var ul = new Element('ul',{
-  classes: ['dropdown-menu'],
+var ul = e.ul(null, {
   attrs: {
     role: 'menu',
     aria-labelledby: 'dropdownMenu1'
-  }
+  },
+  classes: [ 'dropdown-menu' ]
 });
+dropdown.append(ul);
 
-ul.append(new Element('li', {
-  attrs: { role: 'presentation' },
-  inner: [
-    new Element('a', {
-      attrs: {
-        role: 'menuitem',
-        tabindex: '-1',
-        href: '#'
-      },
-      inner: ['Action']
-    })
-  ]
-});
+ul.addItem(e.a('Action','#', { attrs: { role: 'menuitem', tabindex: '-1' }}));
+ul.addItem(e.a('Another action','#', { attrs: { role: 'menuitem', tabindex: '-1' }}));
+ul.addItem(e.a('Something else here','#', { attrs: { role: 'menuitem', tabindex: '-1' }}));
+ul.append(e.li(null, { classes: ['divider'] });
+ul.addItem(e.a('Separated link','#', { attrs: { role: 'menuitem', tabindex: '-1' }}));
 
-ul.append(new Element('li', {
-  attrs: { role: 'presentation' },
-  inner: [
-    new Element('a', {
-      attrs: {
-        role: 'menuitem',
-        tabindex: '-1',
-        href: '#'
-      },
-      inner: ['Another action']
-    })
-  ]
-});
-
-ul.append(new Element('li', {
-  attrs: { role: 'presentation' },
-  inner: [
-    new Element('a', {
-      attrs: {
-        role: 'menuitem',
-        tabindex: '-1',
-        href: '#'
-      },
-      inner: ['Something else here']
-    })
-  ]
-});
-
-ul.append(new Element('li', {
-  attrs: { role: 'presentation' },
-  classes: ['divider']
-});
-
-ul.append(new Element('li', {
-  attrs: { role: 'presentation' },
-  inner: [
-    new Element('a', {
-      attrs: {
-        role: 'menuitem',
-        tabindex: '-1',
-        href: '#'
-      },
-      inner: ['Separated link']
-    })
-  ]
-});
+var lis = ul.find('li');
+for (var i=0; i<lis.length; i++) {
+  lis[i].attr('role','presentation');
+}
 
 console.log(dropdown.render());
 ```
